@@ -1,4 +1,6 @@
 var VDragJCnt=0;
+var onVDrag="onVDrag";
+var onVDrop="onVDrop";
 class VDragJ {
     constructor(option={}){
         let format="text/plain";
@@ -18,9 +20,6 @@ class VDragJ {
     }
     addDragElA(elA,option={}){
         let _self = this;
-        let format=_self.format
-        if("format" in option)format=option["format"];
-        if("f" in option)format=option["f"];
         if(typeof elA=="object"){
             for(let i=0;i<elA.length;i++){
                 let el=elA[i];
@@ -31,12 +30,9 @@ class VDragJ {
     addDragEl(el,option={}){
         let _self = this;
         if(typeof el=="object" && typeof el.length !="undefined")return _self.addDragElA(el,option);
-        let format=_self.format
-        if("format" in option)format=option["format"];
-        if("f" in option)format=option["f"];
         el.setAttribute("style", "draggable: true;");
         el.addEventListener('dragstart', e=>{
-            _self.dragStart(e,format)
+            _self.dragStart(e)
         })
     }
 
@@ -96,20 +92,28 @@ class VDragJ {
         el.removeEventListener('dragenter');
         el.removeEventListener('dragover');
     }
-    dragStart(e,format){
-        e.dataTransfer.setData(format, e.target.id)
+    dragStart(e){
+        //e.dataTransfer.setData(format, e.target.id)
+        let _self = this;
+        if(_self.callback!=null && typeof _self.callback=="function"){
+            _self.callback(onVDrag,e);
+        }
     }
     dropped (e) {
         let _self = this;
         // console.log('dropped')
         _self.cancelDefault(e)
         if(_self.callback!=null && typeof _self.callback=="function"){
-            _self.callback(e);
+            _self.callback(onVDrop,e);
         }
     }
-    moveEl(e){
+    moveElStart(e){
         let _self = this;
-        let id = e.dataTransfer.getData(_self.format)
+        e.dataTransfer.setData(_self.format, e.target.id);
+    }
+    moveElEnd(e){
+        let _self = this;
+        let id = e.dataTransfer.getData(_self.format);
         e.target.appendChild(document.querySelector('#' + id))
     }
     cancelDefault (e) {

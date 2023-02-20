@@ -48,8 +48,9 @@
         <img id="img2" src="img/1649475785_921.png">
         <div id="tg" style="width: 100%;min-height: 200px;height: 800px;">drop to this div</div>
         <script>
-            let v=new VDragJ({"fmt":"text/plain","cb":e=>{
-                v.moveEl(e);
+            let v=new VDragJ({"fmt":"text/plain","cb":(c,e)=>{
+                    if(c==onVDrag)v.moveElStart(e);
+                    if(c==onVDrop)v.moveElEnd(e);
                 }});
             v.addDragID("img2")
             v.addDropID("tg")

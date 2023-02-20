@@ -13,12 +13,13 @@ Step1 include js
 
 
 <h2>
-Step2 init VDragJ and set callback of drop action
+Step2 init VDragJ and set callback of drag and drop action
 </h2>
 
 ``````js
-let v=new VDragJ({"fmt":"text/plain","cb":e=>{
-        v.moveEl(e);
+let v=new VDragJ({"fmt":"text/plain","cb":(c,e)=>{
+        if(c==onVDrag)v.moveElStart(e);
+        if(c==onVDrop)v.moveElEnd(e);
     }});
 ``````
 
@@ -57,12 +58,13 @@ v.addDropID("img2");
 ``````
 
 <h2>
-第二步 初始化並設定drop回傳處理
+第二步 初始化並設定drag和drop回傳處理
 </h2>
 
 ``````js
-let v=new VDragJ({"fmt":"text/plain","cb":e=>{
-        v.moveEl(e);
+let v=new VDragJ({"fmt":"text/plain","cb":(c,e)=>{
+        if(c==onVDrag)v.moveElStart(e);
+        if(c==onVDrop)v.moveElEnd(e);
     }});
 ``````
 
