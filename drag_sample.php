@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__FILE__).'/_path.php');
+
 ?>
 <!DOCTYPE html>
 <html >
@@ -12,9 +12,9 @@ include_once(dirname(__FILE__).'/_path.php');
     <meta name="language" content="zh-tw">
     <meta name="generator" content="N/A">
     <title>無心碎碎念 drag</title>
-    <link href="<?php echo URL_ROOT;?>lib/bootstrap-5.2.1-dist/css/bootstrap.css" rel="stylesheet">
-    <script src="<?php echo URL_ROOT;?>lib/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
-    <script src="<?php echo URL_ROOT;?>js/jquery-3.1.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="js/VDragJ.js?_=<?php echo time();?>"></script>
 
 </head>
