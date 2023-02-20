@@ -40,38 +40,20 @@
         <div class="inner">
             <h3 class="masthead-brand">drag</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <!--                <a class="nav-link active" href="#">Home</a>-->
-                <!--                <a class="nav-link" href="#">Features</a>-->
-                <!--                <a class="nav-link" href="#">Contact</a>-->
             </nav>
         </div>
     </header>
 
     <main role="main" class="inner cover">
-<!--        <div class="photo" style="position:relative; background:white;width: 500px; height: 400px;">-->
-<!--            <div id="panel"  style="z-index: 999; position: relative; width: 500px; height: 400px;">-->
-<!--            </div>-->
-<!--            <div id="dv1" style="width: 50px; height: 50px;position: absolute;z-index: 1;top:20px">-->
-<!--                <img id="img1" style="position: absolute; z-index: 1; touch-action: unset; width: 50px; height: 50px;"-->
-<!--                     src="img/1649475785_921.png">-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
         <img id="img2" src="img/1649475785_921.png">
-        <div id="tg">aaa</div>
+        <div id="tg" style="width: 100%;min-height: 200px;height: 800px;">drop to this div</div>
         <script>
-            // let v=new VMoveJ("panel");
-            // v.addDiv("dv1")
-
             let v=new VDragJ({"fmt":"text/plain","cb":e=>{
                 v.moveEl(e);
                 }});
             v.addDragID("img2")
             v.addDropID("tg")
         </script>
-
-
-
     </main>
 
     <footer class="mastfoot mt-auto">
