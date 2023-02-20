@@ -52,7 +52,7 @@ class VDragJ {
         let _self = this;
         if(typeof el=="object" && typeof el.length !="undefined")return _self.removeDragElA(el);
         el.setAttribute("style", "draggable: false;");
-        el.removeEventListener('dragstart');
+        el.removeEventListener('dragstart',null);
     }
     addDropID(id,option={}){
         this.addDropEl(document.getElementById(id),option);
@@ -88,9 +88,9 @@ class VDragJ {
     removeDropEl(el){
         let _self = this;
         if(typeof el=="object" && typeof el.length !="undefined")return _self.removeDropElA(el);
-        el.removeEventListener('drop');
-        el.removeEventListener('dragenter');
-        el.removeEventListener('dragover');
+        el.removeEventListener('drop',null);
+        el.removeEventListener('dragenter',null);
+        el.removeEventListener('dragover',null);
     }
     dragStart(e){
         //e.dataTransfer.setData(format, e.target.id)
