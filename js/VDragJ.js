@@ -16,8 +16,21 @@ class VDragJ {
     addDragID(id,option={}){
         this.addDragEl(document.getElementById(id),option);
     }
+    addDragElA(elA,option={}){
+        let _self = this;
+        let format=_self.format
+        if("format" in option)format=option["format"];
+        if("f" in option)format=option["f"];
+        if(typeof elA=="object"){
+            for(let i=0;i<elA.length;i++){
+                let el=elA[i];
+                _self.addDragEl(el,option={})
+            }
+        }
+    }
     addDragEl(el,option={}){
         let _self = this;
+        if(typeof el=="object" && typeof el.length !="undefined")return _self.addDragElA(el,option);
         let format=_self.format
         if("format" in option)format=option["format"];
         if("f" in option)format=option["f"];
@@ -26,19 +39,40 @@ class VDragJ {
             _self.dragStart(e,format)
         })
     }
+
     removeDragID(id){
         this.removeDragEl(document.getElementById(id));
     }
+    removeDragElA(elA){
+        let _self = this;
+        if(typeof elA=="object"){
+            for(let i=0;i<elA.length;i++){
+                let el=elA[i];
+                _self.removeDragEl(el)
+            }
+        }
+    }
     removeDragEl(el){
         let _self = this;
+        if(typeof el=="object" && typeof el.length !="undefined")return _self.removeDragElA(el);
         el.setAttribute("style", "draggable: false;");
         el.removeEventListener('dragstart');
     }
     addDropID(id,option={}){
         this.addDropEl(document.getElementById(id),option);
     }
+    addDropElA(elA,option={}){
+        let _self = this;
+        if(typeof elA=="object"){
+            for(let i=0;i<elA.length;i++){
+                let el=elA[i];
+                _self.addDropEl(el,option={})
+            }
+        }
+    }
     addDropEl(el,option={}){
         let _self = this;
+        if(typeof el=="object" && typeof el.length !="undefined")return _self.addDropElA(el,option);
         el.addEventListener('drop', e=>{_self.dropped(e)})
         el.addEventListener('dragenter', e=>{_self.cancelDefault(e)})
         el.addEventListener('dragover', e=>{_self.cancelDefault(e)})
@@ -46,8 +80,18 @@ class VDragJ {
     removeDropID(id){
         this.removeDropEl(document.getElementById(id));
     }
+    removeDropElA(elA){
+        let _self = this;
+        if(typeof elA=="object"){
+            for(let i=0;i<elA.length;i++){
+                let el=elA[i];
+                _self.removeDropEl(el)
+            }
+        }
+    }
     removeDropEl(el){
         let _self = this;
+        if(typeof el=="object" && typeof el.length !="undefined")return _self.removeDropElA(el);
         el.removeEventListener('drop');
         el.removeEventListener('dragenter');
         el.removeEventListener('dragover');
