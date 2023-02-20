@@ -2,7 +2,7 @@
 <h1>VDragJ</h1>
 
 
-[sample](https://tool.vfhhu.xyz/a_js_sample/VDrag/drag_sample.php)
+[sample](https://tool.vfhhu.xyz/a_js_sample/VDragJ/drag_sample.php)
 <h2>
 Step1 include js
 </h2>
@@ -47,7 +47,7 @@ v.addDropID("img2");
 <h1>中文說明</h1>
 
 
-[範例網址](https://tool.vfhhu.xyz/a_js_sample/VDrag/drag_sample.php)
+[範例網址](https://tool.vfhhu.xyz/a_js_sample/VDragJ/drag_sample.php)
 <h2>
 第一步: 引入js
 </h2>
